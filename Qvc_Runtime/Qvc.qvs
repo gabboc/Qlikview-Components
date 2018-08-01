@@ -1118,9 +1118,9 @@ IF $(_qvctemp.den.doExtract) THEN		// If not turned off by previous test, then e
 	// Find the connection. First look for a connectionString,
 	// then a connectionFile. 
 	//==============================================
-	IF len('$(_qvctemp.den.connectionString)') > 0 THEN			// We have a connectionString, use it.
+	IF len('$(_qvctemp.den.connectionString)') > 0 or '$(_qvctemp.den.connectionString)'<>_qvctemp.den.connect_TMP THEN			// We have a connectionString, use it.
 		SET _qvctemp.den.connect = $(_qvctemp.den.connectionString);
-
+		SET _qvctemp.den.connect_TMP = $(_qvctemp.den.connectionString);
 	// No connectionString, look for a connectionFile.
 	ELSEIF len('$(_qvctemp.den.connectionFilename)') > 0 THEN	// We have a connectionFile.
 		// Load the connection string.
